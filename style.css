@@ -1,0 +1,28 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid purple;
+}
+.logo, .content, .framework, .navbar{
+    margin: 2px;
+}
+.logo{
+    border: 2px solid yellow;
+}
+.content{
+    border: 2px solid green;
+}
+.framework{
+    border: 2px solid blue;
+}
+.navbar{
+    border: 2px solid red;
+}
+p{
+    font-weight: bold;
+}
