@@ -26,14 +26,22 @@ body{
 p{
     font-weight: bold;
 }
-
-
-
-
-
-
-
-/*test area*/
+ul{
+  list-style-type: none;
+}
+ul li{
+  display:inline;
+}
+.menu{
+  border: #bbb 2px solid;
+}
+.items{
+  border: 2px solid black;
+}
+.items ul li{
+  display: block;
+}
+/*to clean area*/
 * {box-sizing:border-box}
 
 /* Slideshow container */
@@ -120,4 +128,38 @@ p{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+/*end of clean up areA*/
+
+/*TEST AREA*/
+.floating-navbar{
+   border: 2px solid pink;
+}
+@media (orientation: landscape){
+   .framework {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .floating-navbar {
+    min-width: 180px;
+    max-width: 220px;
+    border: 2px solid violet;
+    align-self: stretch;
+  }
+  .floating-navbar ul li{
+    display: block;
+  }
+  .content {
+    flex: 1;
+  }
+  .menu{
+    display: flex;
+    flex-direction: row;
+     flex-wrap: wrap;
+  height: 240px;
+  align-content: flex-start;
+  }
+
 }
