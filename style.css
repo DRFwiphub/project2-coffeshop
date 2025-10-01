@@ -1,3 +1,11 @@
+:root{
+  --base-color: white;
+  --base-variant: #e8e9e8;
+  --text-color: #111528;
+  --secondary-text: #232; 
+  --primary-color: #343;
+  --accent-color: #007;
+}
 body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -26,6 +34,9 @@ body{
 p{
   font-weight: bold;
 }
+h2{
+  font: 100;
+}
 ul{
   list-style-type: none;
 }
@@ -34,19 +45,57 @@ ul li{
 }
 .menu{
   border: #bbb 2px solid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
 }
 .menu .items{
   justify-content: center;
   text-align: center;
 }
 .items{
+  flex: 1 1 20em;   /* Grow, shrink, basis (uses em, not px) */
+  min-width: 16em;  /* Prevents items from getting too small */
+  max-width: 100%;
+  box-sizing: border-box;
   border: 2px solid black;
+  padding: 1em;
+  background: var(--base-variant);
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0; /* Prevents overflow from long text */
 }
-.items ul li{
-  display: block;
-  padding: auto;
+.items h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
 }
-/*to clean area*/
+.items ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.items ul li {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  word-break: break-word;
+}
+.linkbtn{
+  display: none;
+}
+
+
+/*to clean or replace*/
 * {box-sizing:border-box}
 
 /* Slideshow container */
@@ -137,21 +186,16 @@ ul li{
 
 /*end of clean up areA*/
 
-/*TEST AREA*/
 .floating-navbar{
    border: 2px solid pink;
 }
 @media (orientation: landscape){
-   .framework {
+  .framework {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
   }
   .floating-navbar {
-    min-width: 180px;
-    max-width: 220px;
+        width: 300px;
     border: 2px solid violet;
-    align-self: stretch;
   }
   .floating-navbar ul li{
     display: block;
@@ -166,11 +210,11 @@ ul li{
     height: auto;
     align-content: flex-start;
     margin: 1%;
-    padding: 1%;
   }
   .items{
     min-width: 250px;
     margin: 10px;
   }
-
+  .linkbtn{
+  display: block;
 }
