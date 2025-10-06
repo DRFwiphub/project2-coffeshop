@@ -51,6 +51,13 @@ ul li{
   width: 100%;
   justify-content: center;
   align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+  gap: 1.5em;
+  width: 100%;
+  justify-items: stretch;
+  align-items: stretch;
+  margin: 1em 0;
 }
 .menu .items{
   justify-content: center;
@@ -70,6 +77,14 @@ ul li{
   flex-direction: column;
   align-items: stretch;
   min-width: 0; /* Prevents overflow from long text */
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 2px solid black;
+  padding: 1em;
+  background: var(--base-variant);
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  align-items: start;
 }
 .items h2 {
   margin-top: 0;
@@ -204,17 +219,95 @@ ul li{
     flex: 1;
   }
   .menu{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+    gap: 1.5em;
+    margin: 1%;
     height: auto;
     align-content: flex-start;
-    margin: 1%;
   }
   .items{
-    min-width: 250px;
-    margin: 10px;
+    min-width: 0;
+    margin: 0.5em 0;
   }
   .linkbtn{
+    display: block;
+}
+
+/* Add to style.css */
+
+.floating-navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100px;
+}
+
+.vertical-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2.2em;
+  background: var(--primary-color, #343);
+  color: #fff;
+  border: none;
+  border-radius: 1em 0 0 1em;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.vertical-strip:hover {
+  background: var(--accent-color, #007);
+}
+
+.floating-navbar nav {
+  transition: max-width 0.3s, opacity 0.3s;
+  overflow: hidden;
+  max-width: 220px;
+  opacity: 1;
+  margin-left: 2.2em; /* Make space for the strip */
+}
+
+.floating-navbar.nav-collapsed nav {
+  max-width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-navbar ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.floating-navbar ul li {
   display: block;
+  margin: 0.5em 0;
+}
+
+@media (orientation: portrait) {
+  .vertical-strip {
+    display: none;
+  }
+  .floating-navbar nav {
+    max-width: 100% !important;
+    opacity: 1 !important;
+    margin-left: 0;
+  }
+}
+
+@media (orientation: landscape) {
+  .vertical-strip {
+    display: flex;
+  }
+}
 }
