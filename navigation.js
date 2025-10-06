@@ -28,14 +28,5 @@ document.addEventListener("DOMContentLoaded", function() {
   updateNavbarState();
 });
 
-function showLinks(){
-    console.log("Wooh!");
-    navigation.style.display ="block";
-    navigation.style.backgroundColor = "transparent";
-}
-function hideLinks(){
-    console.log("Yay!");
-    list.style.display = "none";
-    navigation.style.backgroundColor = "red";
-}
+
 

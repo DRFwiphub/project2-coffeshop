@@ -6,6 +6,9 @@
   --primary-color: #343;
   --accent-color: #007;
 }
+* {
+  box-sizing:border-box; /* used in slideshow & grid*/
+}
 body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -24,6 +27,14 @@ body{
 }
 .content{
   border: 2px solid green;
+  position: relative;
+}
+.floating-navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100px;
 }
 .framework{
   border: 2px solid blue;
@@ -43,29 +54,25 @@ ul{
 ul li{
   display:inline;
 }
-.menu{
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
   border: #bbb 2px solid;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5em;
   width: 100%;
   justify-content: center;
   align-items: stretch;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
-  gap: 1.5em;
-  width: 100%;
-  justify-items: stretch;
-  align-items: stretch;
-  margin: 1em 0;
 }
 .menu .items{
   justify-content: center;
   text-align: center;
+  padding: 1px;
 }
 .items{
-  flex: 1 1 20em;   /* Grow, shrink, basis (uses em, not px) */
-  min-width: 16em;  /* Prevents items from getting too small */
+  flex: 1 1 20em;   
+  min-width: 16em; 
   max-width: 100%;
   box-sizing: border-box;
   border: 2px solid black;
@@ -76,7 +83,7 @@ ul li{
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  min-width: 0; /* Prevents overflow from long text */
+  min-width: 0; 
   display: grid;
   grid-template-rows: auto 1fr;
   border: 2px solid black;
@@ -103,29 +110,15 @@ ul li{
   border: 1px solid #ccc;
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
-  word-break: break-word;
 }
-.linkbtn{
-  display: none;
-}
-
-
-/*to clean or replace*/
-* {box-sizing:border-box}
-
-/* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
 }
-
-/* Hide the images by default */
 .mySlides {
   display: none;
 }
-
-/* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -140,19 +133,13 @@ ul li{
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
-
-/* Caption text */
 .text {
   color: #f2f2f2;
   font-size: 15px;
@@ -162,8 +149,6 @@ ul li{
   width: 100%;
   text-align: center;
 }
-
-/* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
   font-size: 12px;
@@ -171,8 +156,6 @@ ul li{
   position: absolute;
   top: 0;
 }
-
-/* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
   height: 15px;
@@ -183,12 +166,9 @@ ul li{
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
 .active, .dot:hover {
   background-color: #717171;
 }
-
-/* Fading animation */
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;
@@ -209,7 +189,7 @@ ul li{
     display: flex;
   }
   .floating-navbar {
-        width: 300px;
+        width: 180px;
     border: 2px solid violet;
   }
   .floating-navbar ul li{
@@ -222,7 +202,6 @@ ul li{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
     gap: 1.5em;
-    margin: 1%;
     height: auto;
     align-content: flex-start;
   }
@@ -233,27 +212,17 @@ ul li{
   .linkbtn{
     display: block;
 }
-
-/* Add to style.css */
-
-.floating-navbar {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  min-height: 100px;
-}
-
-.vertical-strip {
+  .vertical-strip {
+    display: flex;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
   height: 100%;
   width: 2.2em;
   background: var(--primary-color, #343);
   color: #fff;
   border: none;
-  border-radius: 1em 0 0 1em;
+  border-radius: 0 1em 1em 0;
   cursor: pointer;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -276,6 +245,9 @@ ul li{
   opacity: 1;
   margin-left: 2.2em; /* Make space for the strip */
 }
+.floating-navbar.nav-collapsed {
+  width: 50px;
+}
 
 .floating-navbar.nav-collapsed nav {
   max-width: 0;
@@ -293,7 +265,7 @@ ul li{
   display: block;
   margin: 0.5em 0;
 }
-
+}
 @media (orientation: portrait) {
   .vertical-strip {
     display: none;
@@ -303,11 +275,4 @@ ul li{
     opacity: 1 !important;
     margin-left: 0;
   }
-}
-
-@media (orientation: landscape) {
-  .vertical-strip {
-    display: flex;
-  }
-}
 }
